@@ -65,6 +65,14 @@ class TaskJuggler
       # The whole line is put in a 'div' section. All coordinates relative to
       # the top-left corner of this div. Elements that extend over the
       # boundaries of this div are cut off.
+      
+      # Get flags and make css-classes for later customization
+      flags = @query.property['flags', @query.scenarioIdx]
+      flagClasses = []
+      flags.each do |flag|
+        flagClasses << "flag_#{flag}"
+      end
+      classes = "#{@category} #{flagClasses.join(" ")}"
       div = XMLElement.new('div', 'class' => @category,
                            'style' => "margin:0px; padding:0px; " +
                            "position:absolute; " +
